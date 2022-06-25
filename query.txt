@@ -1,0 +1,46 @@
+create database academia;
+use academia;
+
+create table unidade (
+	Id int not null auto_increment primary key,
+    Nome varchar(60) not null,
+    Estado varchar(10) not null,
+    Cidade varchar(60) not null,
+    Rua varchar(60) not null
+);
+
+create table plano (
+	Id int not null auto_increment primary key,
+    Nome varchar(60) not null,
+    Periodo int not null,
+    Valor double
+);
+
+create table equipamento (
+	Id int not null auto_increment primary key,
+    Nome varchar(60) not null,
+    Descricao varchar(60) not null,
+    Valor double not null,
+    Unidade int not null,
+    foreign key(Unidade) references Unidade(Id)
+);
+
+INSERT INTO UNIDADE VALUES
+(null, "Unidade Mooca", "SP", "São Paulo", "Rua da mooca"),
+(null, "Unidade Copacabana", "RJ", "Rio de Janeiro", "Rua copacabana"),
+(null, "Unidade Governador", "MG", "Governador Valadares", "rua governador"),
+(null, "Unidade Armênia", "SP", "São Paulo", "rua armenia");
+
+INSERT INTO PLANO VALUES
+(null, "Starter", 3, 130.00),
+(null, "Pro", 6, 250.00),
+(null, "Expert", 12, 400.00);
+
+INSERT INTO EQUIPAMENTO VALUES
+(null, "Esteira", "disponível", 45.00, 5),
+(null, "Elástico", "Indisponível", 25.00, 7),
+(null, "Pesos", "disponível", 15.00, 6);
+
+INSERT INTO CLIENTE VALUES
+(null, "Lucas Lima", 43355, 21, 8, 4),
+(null, "Pedro Farias", 66429, 18, 5, 5);
