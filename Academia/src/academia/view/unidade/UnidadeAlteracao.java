@@ -8,12 +8,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import academia.controller.UnidadeController;
 
@@ -30,18 +33,19 @@ public class UnidadeAlteracao extends JDialog {
 
 	public UnidadeAlteracao(int idUnidade, String nome, String estado, String cidade, 
 			                    String rua, int linha, UnidadeModeloTabela mtTabela) { 
+		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 		setTitle("Alteração de Unidades"); 
-		setSize(500, 335); 
+		setSize(500, 315); 
 		setLocationRelativeTo(null); 
 		setModal(true); 
 		
-		lbTitulo = new JLabel("Alteração de Unidades");
+		lbTitulo = new JLabel("Alteração de Unidades",icon, SwingConstants.CENTER);
 		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19)); 
 		
-		lbNome = new JLabel("Nome");
-		lbEstado = new JLabel("Estado");
-		lbCidade = new JLabel("Cidade");
-		lbRua = new JLabel("Rua");
+		lbNome = new JLabel("Nome:");
+		lbEstado = new JLabel("Estado:");
+		lbCidade = new JLabel("Cidade:");
+		lbRua = new JLabel("Rua:");
 		
 		tfNome = new JTextField();
 		tfCidade = new JTextField();
@@ -79,19 +83,26 @@ public class UnidadeAlteracao extends JDialog {
 
 		cp = getContentPane(); 
 		cp.setLayout(null);
-		cp.setBackground(new Color(180, 205, 205)); 
+		cp.setBackground(new Color(46, 46, 46)); 
 
-		lbTitulo.setBounds(125, 10, 300, 25); 
-		lbNome.setBounds(20, 50, 100, 25);
-		tfNome.setBounds(100, 50, 360, 25);
-		lbEstado.setBounds(20, 90, 100, 25);
-		cbEstado.setBounds(100, 90, 100, 25);
-		lbCidade.setBounds(20, 130, 100, 25);
-		tfCidade.setBounds(100, 130, 100, 25);
-		lbRua.setBounds(20, 170, 100, 25);
-		tfRua.setBounds(100, 170, 220, 25);
-		btSalvar.setBounds(200, 250, 100, 25);
-
+		lbTitulo.setBounds(90, 10, 300, 20); 
+		lbNome.setBounds(20, 50, 100, 20);
+		tfNome.setBounds(100, 50, 360, 20);
+		lbEstado.setBounds(20, 90, 100, 20);
+		cbEstado.setBounds(100, 90, 100, 20);
+		lbCidade.setBounds(20, 130, 100, 20);
+		tfCidade.setBounds(100, 130, 180, 20);
+		lbRua.setBounds(20, 170, 100, 20);
+		tfRua.setBounds(100, 170, 360, 20);
+		btSalvar.setBounds(190, 220, 100, 25);
+		
+		lbTitulo.setForeground(new Color(255, 255, 255));
+		lbNome.setForeground(new Color(255, 255, 255));
+		lbCidade.setForeground(new Color(255, 255, 255));
+		lbRua.setForeground(new Color(255, 255, 255));
+		
+		lbEstado.setForeground(new Color(255, 255, 255));
+		
 		cp.add(lbTitulo);
 		cp.add(lbNome);
 		cp.add(tfNome);

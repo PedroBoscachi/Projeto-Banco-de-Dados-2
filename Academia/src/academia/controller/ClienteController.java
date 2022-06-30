@@ -13,7 +13,7 @@ public class ClienteController {
 	private Cliente cliente;
 	private List<String> erros;
 	
-	public List<String> insereCliente(String nome, String cep, Integer idade, Unidade unidade, Plano plano) {
+	public List<String> insereCliente(String nome, String cep, String idade, Unidade unidade, Plano plano) {
 		recebeDadosCliente(null, nome, cep, idade, unidade, plano);
 		
 		if(erros.size() == 0)
@@ -22,7 +22,7 @@ public class ClienteController {
 		return erros;
 	}
 	
-	public void recebeDadosCliente(Integer matricula, String nome, String cep, Integer idade, Unidade unidade, Plano plano) {
+	public void recebeDadosCliente(Integer matricula, String nome, String cep, String idade, Unidade unidade, Plano plano) {
 		cliente = new Cliente();
 		erros = new ArrayList<String>();
 		
@@ -50,7 +50,7 @@ public class ClienteController {
 		return new ClienteDao().consultaClientes();
 	}
 	
-	public List<String> alteraCliente(Integer matricula, String nome, String cep, Integer idade, Unidade unidade, Plano plano) {
+	public List<String> alteraCliente(Integer matricula, String nome, String cep, String idade, Unidade unidade, Plano plano) {
     	recebeDadosCliente(matricula, nome, cep, idade, unidade, plano);
     	
 		if (erros.size() == 0)

@@ -1,14 +1,22 @@
 package academia.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 import academia.view.cliente.ClienteCadastro;
 import academia.view.cliente.ClienteConsulta;
@@ -34,11 +42,16 @@ public class Index extends JFrame {
 	private JMenuItem miCadEquipamento[];
 	private static final String cadItens[] = { "Cadastrar", "Consultar" };
 	private JMenuItem miCadSair;
+	private JLabel lbTitulo;
+
 	
 	public Index() {
+		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\icon.png");
 		mbBarra = new  JMenuBar();
 		mnCadastro = new JMenu("Cadastro");
-		mnCadCliente =  new JMenu("Cliente");
+		mnCadastro.setFont(new Font("Roboto", Font.BOLD, 15)); 
+	
+		mnCadCliente =  new JMenu("Aluno");
 		mnCadUnidade = new JMenu("Unidade");
 		mnCadPlano = new JMenu("Plano");
 		mnCadEquipamento = new JMenu("Equipamento");
@@ -47,13 +60,25 @@ public class Index extends JFrame {
 		miCadPlano = new JMenuItem[2];
 		miCadEquipamento = new JMenuItem[2];
 		miCadSair = new JMenuItem("Sair");
+		lbTitulo = new JLabel("GYM Solutions", icon, SwingConstants.CENTER);
+		lbTitulo.setFont(new Font("Roboto", Font.BOLD, 55)); 
+		lbTitulo.setIcon(icon);
+		lbTitulo.setForeground(new Color(212, 212, 212));
+		  Border blackline = BorderFactory.createLineBorder(Color.black);
+		mbBarra.setBorder(blackline);
+	
 		
-		setTitle("Sistema de Academia");
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setSize(1000, 800);
+		setTitle("GYM Solutions");
+		mnCadCliente.setFont(new Font("Roboto", Font.BOLD, 15)); 
+		mnCadUnidade.setFont(new Font("Roboto", Font.BOLD, 15)); 
+		mnCadPlano.setFont(new Font("Roboto", Font.BOLD, 15)); 
+		mnCadEquipamento.setFont(new Font("Roboto", Font.BOLD, 15)); 
+//		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setSize(1000, 600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setBackground(new Color(180, 205, 205));
+		getContentPane().setBackground(new Color(46, 46, 46));
+		getContentPane().add(lbTitulo);
 		for(int i = 0; i < 2; i++) {
 			miCadCliente[i] = new JMenuItem(cadItens[i]);
 			mnCadCliente.add(miCadCliente[i]);
@@ -64,6 +89,7 @@ public class Index extends JFrame {
 			miCadEquipamento[i] = new JMenuItem(cadItens[i]);
 			mnCadEquipamento.add(miCadEquipamento[i]);
 		}
+		lbTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		mnCadastro.add(mnCadCliente);
 		mnCadastro.add(mnCadUnidade);
 		mnCadastro.add(mnCadPlano);
@@ -72,6 +98,7 @@ public class Index extends JFrame {
 		mnCadastro.add(miCadSair);
 		mbBarra.add(mnCadastro);
 		setJMenuBar(mbBarra);
+		
 		
 		miCadCliente[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { miCadClienteAction(); }
@@ -99,6 +126,10 @@ public class Index extends JFrame {
 		});
 		miCadEquipamento[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { miConsEquipamentoAction(); }
+		});
+		
+		miCadSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { System.exit(0);}
 		});
 	}
 	

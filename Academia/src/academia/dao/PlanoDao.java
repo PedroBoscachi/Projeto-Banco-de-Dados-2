@@ -14,7 +14,7 @@ public class PlanoDao extends GenericDao {
 	private static String excecao = null;
 	
 	public String inserePlano(Plano plano) {
-		instrucaoSql = "INSERT INTO PLANO (Nome, Periodo, Valor) VALUES (?,?,?)";
+		instrucaoSql = "INSERT INTO PLANO (Nome, Duracao, Valor) VALUES (?,?,?)";
 		return insereAlteraExclui(instrucaoSql, plano.getNome(), plano.getPeriodo(),
 						plano.getValor());
 	}
@@ -40,7 +40,7 @@ public class PlanoDao extends GenericDao {
 	        	            plano = new Plano();
 	        	            plano.setId(registros.getInt("Id"));
 	        	            plano.setNome(registros.getString("Nome"));
-	        	            plano.setPeriodo(registros.getInt("Periodo"));
+	        	            plano.setPeriodo(registros.getInt("Duracao"));
 	        	            plano.setValor(registros.getDouble("Valor"));
 	        	            planos.add(plano);
 	        	        }
@@ -57,7 +57,7 @@ public class PlanoDao extends GenericDao {
 	    }
 	 
 	 public String alteraPlanos(Plano plano) {
-		 instrucaoSql = "UPDATE PLANO SET Nome = ?, Periodo = ?, Valor = ? " + "WHERE Id = ?";
+		 instrucaoSql = "UPDATE PLANO SET Nome = ?, Duracao = ?, Valor = ? " + "WHERE Id = ?";
 		 return insereAlteraExclui(instrucaoSql, plano.getNome(), plano.getPeriodo(), plano.getValor(), plano.getId());
 	 }
 	 

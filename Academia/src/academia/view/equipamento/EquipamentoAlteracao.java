@@ -9,6 +9,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -16,6 +18,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 
@@ -36,13 +39,17 @@ public class EquipamentoAlteracao extends JDialog {
 
 	public EquipamentoAlteracao(int idEquipamento, String nome, String descricao, String valor, 
 			                    String unidade, int linha, EquipamentoModeloTabela mtTabela) { 
+		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 		setTitle("Alteração de Equipamentos"); 
-		setSize(500, 335); 
+		setSize(500, 290); 
 		setLocationRelativeTo(null); 
 		setModal(true); 
 		
-		lbTitulo = new JLabel("Alteração de Equipamentos");
-		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19)); 
+		lbTitulo = new JLabel("Alteração de Equipamentos",icon, SwingConstants.CENTER);
+		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19));
+		
+		lbTitulo.setForeground(new Color(255, 255, 255));
+		
 		
 		lbNome = new JLabel("Nome");
 		lbDescricao = new JLabel("Descrição");
@@ -92,9 +99,14 @@ public class EquipamentoAlteracao extends JDialog {
 
 		cp = getContentPane();
 		cp.setLayout(null);
-		cp.setBackground(new Color(180, 205, 205)); 
+		cp.setBackground(new Color(46, 46, 46)); 
 		
-		lbTitulo.setBounds(125, 10, 300, 25); 
+		lbNome.setForeground(new Color(255, 255, 255));
+		lbDescricao.setForeground(new Color(255, 255, 255));
+		lbValor.setForeground(new Color(255, 255, 255));
+		lbUnidade.setForeground(new Color(255, 255, 255));
+		
+		lbTitulo.setBounds(95, 10, 300, 25); 
 		lbNome.setBounds(20, 50, 100, 25);
 		tfNome.setBounds(100, 50, 360, 25);
 		lbDescricao.setBounds(20, 90, 100, 25);
@@ -103,7 +115,7 @@ public class EquipamentoAlteracao extends JDialog {
 		tfValor.setBounds(100, 130, 100, 25);
 		lbUnidade.setBounds(20, 170, 100, 25);
 		cbUnidade.setBounds(100, 170, 220, 25);
-		btSalvar.setBounds(200, 250, 100, 25);
+		btSalvar.setBounds(200, 215, 100, 25);
 
 		cp.add(lbTitulo);
 		cp.add(lbNome);

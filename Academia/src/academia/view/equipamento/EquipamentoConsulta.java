@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -34,6 +36,7 @@ public class EquipamentoConsulta extends JDialog {
 	private Container cp;
 	
 	public EquipamentoConsulta() {
+		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\agenda.png");
 		setTitle("Consulta de Equipamentos"); 
 		setSize(700, 320); 
 		setLocationRelativeTo(null); 
@@ -59,18 +62,18 @@ public class EquipamentoConsulta extends JDialog {
 		} else
 			mtTabela = new EquipamentoModeloTabela(equipamentos, unidades);
 		
-		lbTitulo = new JLabel("Consulta de Equipamentos");
+		lbTitulo = new JLabel("Consulta de Equipamentos",icon, SwingConstants.CENTER);
 		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19));
 		
 		tbEquipamento = new JTable(mtTabela);
 		spTabela = new JScrollPane(tbEquipamento);
 		
 		tbEquipamento.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		tbEquipamento.getColumnModel().getColumn(0).setPreferredWidth(50);
-		tbEquipamento.getColumnModel().getColumn(1).setPreferredWidth(160);
-		tbEquipamento.getColumnModel().getColumn(2).setPreferredWidth(70);
-		tbEquipamento.getColumnModel().getColumn(3).setPreferredWidth(105);
-		
+		tbEquipamento.getColumnModel().getColumn(0).setPreferredWidth(70);
+		tbEquipamento.getColumnModel().getColumn(1).setPreferredWidth(150);
+		tbEquipamento.getColumnModel().getColumn(2).setPreferredWidth(150);
+		tbEquipamento.getColumnModel().getColumn(3).setPreferredWidth(115);
+		tbEquipamento.getColumnModel().getColumn(4).setPreferredWidth(155);
 		tbEquipamento.getTableHeader().setFont(new Font(null, Font.BOLD, 12));
 		
 		DefaultTableCellRenderer dtcrCentro = new DefaultTableCellRenderer();
@@ -82,12 +85,12 @@ public class EquipamentoConsulta extends JDialog {
 		
 		btAlterar = new JButton("Alterar");
 		btExcluir = new JButton("Excluir");
-		
+		lbTitulo.setForeground(new Color(255, 255, 255));
 		cp = getContentPane(); 
 		cp.setLayout(null); 
-		cp.setBackground(new Color(180, 205, 205));
+		cp.setBackground(new Color(46, 46, 46));
 		
-		lbTitulo.setBounds(215, 10, 300, 25); 
+		lbTitulo.setBounds(180, 10, 300, 25); 
 		spTabela.setBounds(20, 40, 645, 182);
 		btAlterar.setBounds(215, 240, 100, 25);
 		btExcluir.setBounds(355, 240, 100, 25);

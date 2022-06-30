@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -33,8 +35,9 @@ public class PlanoConsulta extends JDialog {
 	private Container cp;
 	
 	public PlanoConsulta() {
+		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\agenda.png");
 		setTitle("Consulta de Planos"); 
-		setSize(700, 320); 
+		setSize(660, 350); 
 		setLocationRelativeTo(null); 
 		setModal(true);
 		
@@ -50,17 +53,17 @@ public class PlanoConsulta extends JDialog {
 		} else 
 			mtTabela = new PlanoModeloTabela(planos);
 		
-		lbTitulo = new JLabel("Consulta de Planos");
+		lbTitulo = new JLabel("Consulta de Planos",icon, SwingConstants.CENTER);
 		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19));
 		
 		tbPlano = new JTable(mtTabela);
 		spTabela = new JScrollPane(tbPlano);
 		
 		tbPlano.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		tbPlano.getColumnModel().getColumn(0).setPreferredWidth(50);
-		tbPlano.getColumnModel().getColumn(1).setPreferredWidth(160);
-		tbPlano.getColumnModel().getColumn(2).setPreferredWidth(70);
-		tbPlano.getColumnModel().getColumn(3).setPreferredWidth(105);
+		tbPlano.getColumnModel().getColumn(0).setPreferredWidth(80);
+		tbPlano.getColumnModel().getColumn(1).setPreferredWidth(190);
+		tbPlano.getColumnModel().getColumn(2).setPreferredWidth(100);
+		tbPlano.getColumnModel().getColumn(3).setPreferredWidth(135);
 		
 		tbPlano.getTableHeader().setFont(new Font(null, Font.BOLD, 12));
 		
@@ -76,12 +79,15 @@ public class PlanoConsulta extends JDialog {
 		
 		cp = getContentPane(); 
 		cp.setLayout(null); 
-		cp.setBackground(new Color(180, 205, 205));
+		cp.setBackground(new Color(46, 46, 46));
 		
-		lbTitulo.setBounds(215, 10, 300, 25); 
-		spTabela.setBounds(20, 40, 645, 182);
-		btAlterar.setBounds(215, 240, 100, 25);
-		btExcluir.setBounds(355, 240, 100, 25);
+		lbTitulo.setForeground(new Color(255, 255, 255));
+		
+		lbTitulo.setBounds(175, 10, 300, 25); 
+		spTabela.setBounds(60, 50, 509, 182);
+		btAlterar.setBounds(215, 270, 100, 25);
+		btExcluir.setBounds(355, 270, 100, 25);
+		
 		
 		cp.add(lbTitulo);
 		cp.add(spTabela);

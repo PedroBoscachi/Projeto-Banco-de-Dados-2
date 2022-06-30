@@ -16,8 +16,15 @@ public class ClienteDao extends GenericDao {
 	private static String excecao = null;
 	
 	public String insereCliente(Cliente cliente) {
-		instrucaoSql = "INSERT INTO CLIENTE (Nome, Cep, Idade, Unidade, Plano) VALUES (?,?,?,?,?)";
-		return insereAlteraExclui(instrucaoSql, cliente.getNome(), cliente.getCep(), cliente.getIdade(),
+		instrucaoSql = "INSERT INTO CLIENTE (Nome, Cep, Dat_nas, Unidade, Plano) VALUES (?,?,?,?,?)";
+		String ano = cliente.getIdade().substring(6,10)+"-";
+		String mes = cliente.getIdade().substring(3,5)+"-";
+		String dia = cliente.getIdade().substring(0,2);
+	
+		String FormattedDate = ano.concat(mes).concat(dia);
+	
+		
+		return insereAlteraExclui(instrucaoSql, cliente.getNome(), cliente.getCep(), FormattedDate,
 						cliente.getUnidade().getId(), cliente.getPlano().getId());
 	}
 	
@@ -74,7 +81,7 @@ public class ClienteDao extends GenericDao {
 						plano = new Plano();
 						plano.setId(registros.getInt("Id"));
 						plano.setNome(registros.getString("Nome"));
-						plano.setPeriodo(registros.getInt("Periodo"));
+						plano.setPeriodo(registros.getInt("Duracao"));
 						plano.setValor(registros.getDouble("Valor"));
 						planos.add(plano);
 					}
@@ -116,7 +123,7 @@ public class ClienteDao extends GenericDao {
         	            cliente.setMatricula(registros.getInt("Matricula"));
         	            cliente.setNome(registros.getString("Nome"));
         	            cliente.setCep(registros.getString("Cep"));
-        	            cliente.setIdade(registros.getInt("Idade"));
+        	            cliente.setIdade(registros.getString("Dat_nas"));
         	            unidade = new Unidade();
         	            unidade.setId(registros.getInt("Unidade"));
         	            plano = new Plano();
@@ -137,9 +144,16 @@ public class ClienteDao extends GenericDao {
     }
 	
 	 public String alteraCliente(Cliente cliente) {
-	    	instrucaoSql = "UPDATE CLIENTE SET Nome = ?, Cep = ?, idade = ?, Unidade = ?, Plano = ? " +
+	    	instrucaoSql = "UPDATE CLIENTE SET Nome = ?, Cep = ?, Dat_nas = ?, Unidade = ?, Plano = ? " +
 	                       "WHERE Matricula = ?";
-	    	return insereAlteraExclui(instrucaoSql, cliente.getNome(), cliente.getCep(), cliente.getIdade(), 
+	    	
+	    	String ano = cliente.getIdade().substring(6,10)+"-";
+			String mes = cliente.getIdade().substring(3,5)+"-";
+			String dia = cliente.getIdade().substring(0,2);
+		
+			String FormattedDate = ano.concat(mes).concat(dia);
+		
+	    	return insereAlteraExclui(instrucaoSql, cliente.getNome(), cliente.getCep(), FormattedDate, 
 	        		                                cliente.getUnidade().getId(), cliente.getPlano().getId(), cliente.getMatricula());
 	    }
 	    

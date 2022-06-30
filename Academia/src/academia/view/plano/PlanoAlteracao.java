@@ -9,6 +9,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -16,6 +18,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 
@@ -34,19 +37,25 @@ public class PlanoAlteracao extends JDialog {
 	private PlanoModeloTabela mtTabela; 
 
 	public PlanoAlteracao(int idPlano, String nome, Integer periodo, String valor, int linha, PlanoModeloTabela mtTabela) { 
+		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 		setTitle("Alteração de Planos"); 
-		setSize(500, 335); 
+		setSize(600, 335); 
 		setLocationRelativeTo(null); 
 		setModal(true); 
 		
-		lbTitulo = new JLabel("Alteração de Funcionários");
+		lbTitulo = new JLabel("Alteração de Planos", icon, SwingConstants.CENTER);
+		lbTitulo.setForeground(new Color(255, 255, 255));
 		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19)); 
 		
-		lbNome = new JLabel("Nome");
-		lbPeriodo = new JLabel("Período");
-		lbValor = new JLabel("Valor (R$)");
+		lbNome = new JLabel("Nome:");
+		lbPeriodo = new JLabel("Duração (meses):");
+		lbValor = new JLabel("Valor (R$):");
 		
 		tfNome = new JTextField();
+		
+		lbPeriodo.setForeground(new Color(255, 255, 255));
+		lbNome.setForeground(new Color(255, 255, 255));
+		lbValor.setForeground(new Color(255, 255, 255));
 		
         tfValor = new JFormattedTextField();
 		DecimalFormat df = new DecimalFormat("##,##0.00"); 
@@ -84,16 +93,16 @@ public class PlanoAlteracao extends JDialog {
 
 		cp = getContentPane(); 
 		cp.setLayout(null); 
-		cp.setBackground(new Color(180, 205, 205)); 
+		cp.setBackground(new Color(46, 46, 46)); 
 
-		lbTitulo.setBounds(125, 10, 300, 25); 
+		lbTitulo.setBounds(155, 10, 300, 25); 
 		lbNome.setBounds(20, 50, 100, 25);
-		tfNome.setBounds(100, 50, 360, 25);
-		lbPeriodo.setBounds(20, 90, 100, 25);
-		cbPeriodo.setBounds(100, 90, 100, 25);
+		tfNome.setBounds(150, 50, 360, 25);
+		lbPeriodo.setBounds(20, 90, 120, 25);
+		cbPeriodo.setBounds(150, 90, 100, 25);
 		lbValor.setBounds(20, 130, 100, 25);
-		tfValor.setBounds(100, 130, 100, 25);
-		btSalvar.setBounds(200, 250, 100, 25);
+		tfValor.setBounds(150, 130, 100, 25);
+		btSalvar.setBounds(240, 250, 100, 25);
 
 		cp.add(lbTitulo);
 		cp.add(lbNome);

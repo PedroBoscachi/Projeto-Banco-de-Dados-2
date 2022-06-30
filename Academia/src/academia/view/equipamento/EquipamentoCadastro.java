@@ -9,6 +9,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -16,6 +18,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 
@@ -24,6 +27,7 @@ import academia.model.unidade.Unidade;
 
 @SuppressWarnings("serial")
 public class EquipamentoCadastro extends JDialog {
+	Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 	private JLabel lbTitulo, lbNome, lbDescricao, lbValor, lbUnidade;
 	private JTextField tfNome, tfDescricao;
 	private JFormattedTextField tfValor;
@@ -33,17 +37,17 @@ public class EquipamentoCadastro extends JDialog {
 	
 	public EquipamentoCadastro() {
 		setTitle("Cadastro de Funcionários"); 
-		setSize(1000, 800); 
+		setSize(500, 300); 
 		setLocationRelativeTo(null); 
 		setModal(true);
 		
-		lbTitulo = new JLabel("Cadastro de Equipamento");
+		lbTitulo = new JLabel("Cadastro de Equipamento",icon, SwingConstants.CENTER);
 		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19));
 		
-		lbNome = new JLabel("Nome");
-		lbDescricao = new JLabel("Descrição");
-		lbValor = new JLabel("Valor");
-		lbUnidade = new JLabel("Unidades");
+		lbNome = new JLabel("Nome:");
+		lbDescricao = new JLabel("Descrição:");
+		lbValor = new JLabel("Valor (R$):");
+		lbUnidade = new JLabel("Unidades:");
 		
 		tfNome = new JTextField();
 		tfDescricao = new JTextField();
@@ -74,18 +78,24 @@ public class EquipamentoCadastro extends JDialog {
         
         cp = getContentPane(); 
 		cp.setLayout(null); 
-		cp.setBackground(new Color(180, 205, 205));
+		cp.setBackground(new Color(46, 46, 46));
 		
-		lbTitulo.setBounds(125, 10, 300, 25); 
-		lbNome.setBounds(20, 50, 100, 25);
-		tfNome.setBounds(100, 50, 360, 25);
-		lbValor.setBounds(20, 90, 100, 25);
-		tfValor.setBounds(100, 90, 100, 25);
-		lbDescricao.setBounds(20, 130, 100, 25);
-		tfDescricao.setBounds(20, 170, 220, 25);
-		lbUnidade.setBounds(150, 200, 220, 25);
-		cbUnidade.setBounds(150, 220, 220, 25);
-		btCadastrar.setBounds(300, 300, 300, 25);
+		lbTitulo.setBounds(90, 10, 300, 20); 
+		lbNome.setBounds(20, 50, 100, 20);
+		tfNome.setBounds(100, 50, 360, 20);
+		lbValor.setBounds(20, 90, 100, 20);
+		tfValor.setBounds(100, 90, 100, 20);
+		lbDescricao.setBounds(20, 130, 100, 20);
+		tfDescricao.setBounds(100, 130, 220, 20);
+		lbUnidade.setBounds(20, 170, 220, 20);
+		cbUnidade.setBounds(100, 170, 220, 20);
+		btCadastrar.setBounds(170, 220, 150, 20);
+		
+		lbTitulo.setForeground(new Color(255, 255, 255));
+		lbNome.setForeground(new Color(255, 255, 255));
+		lbValor.setForeground(new Color(255, 255, 255));
+		lbUnidade.setForeground(new Color(255, 255, 255));
+		lbDescricao.setForeground(new Color(255, 255, 255));
 		
 		cp.add(lbTitulo);
 		cp.add(lbNome);
@@ -114,5 +124,12 @@ public class EquipamentoCadastro extends JDialog {
 		List<String> erros = new ArrayList<String>();
 		
 		erros = new EquipamentoController().insereEquipamento(tfNome.getText(), tfDescricao.getText(), valor, (Unidade) cbUnidade.getSelectedItem());
+		
+		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso:\n", 
+                "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+
+			tfDescricao.setText("");
+			tfNome.setText("");
+			tfValor.setValue(0);
 	}
 }

@@ -5,15 +5,22 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.text.MaskFormatter;
 
 import academia.controller.ClienteController;
 import academia.controller.PlanoController;
@@ -22,31 +29,55 @@ import academia.model.unidade.Unidade;
 
 @SuppressWarnings("serial")
 public class ClienteCadastro extends JDialog {
+	Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 	private JLabel lbTitulo, lbNome, lbMatricula, lbCep, lbIdade, lbPlano, lbUnidade;
-	private JTextField tfNome, tfCep, tfIdade; 
+	private JTextField tfNome;
+	//tfCep, tfIdade; 
 	private JComboBox<Plano> cbPlano;
 	private JComboBox<Unidade> cbUnidade;
 	private JButton btCadastrar;
 	private Container cp;
+	private JFormattedTextField tfCep, tfIdade;
 	
 	public ClienteCadastro() {
 		setTitle("Cadastro de Cliente");
-		setSize(800, 500);
+		setSize(550, 400);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
-		lbTitulo = new JLabel("Cadastro de Cliente");
-		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19));
-		lbNome = new JLabel("Nome");
-		lbMatricula = new JLabel("Matrícula");
-		lbCep = new JLabel("CEP");
-		lbIdade = new JLabel("Idade");
-		lbPlano = new JLabel("Plano");
-		lbUnidade = new JLabel("Unidade");
+		lbTitulo = new JLabel("Cadastro de Cliente",icon, SwingConstants.CENTER);
+		lbTitulo.setFont(new Font("Arial", Font.BOLD, 25));
+		lbNome = new JLabel("Nome:");
+		lbMatricula = new JLabel("Matrícula:");
+		lbCep = new JLabel("CEP:");
+		lbIdade = new JLabel("Data de nascimento:");
+		lbPlano = new JLabel("Plano:");
+		lbUnidade = new JLabel("Unidade:");
 		
+		
+		lbTitulo.setForeground(new Color(255, 255, 255));
+		lbNome.setForeground(new Color(255, 255, 255));
+		lbMatricula.setForeground(new Color(255, 255, 255));
+		lbCep.setForeground(new Color(255, 255, 255));
+		lbIdade.setForeground(new Color(255, 255, 255));
+		lbPlano.setForeground(new Color(255, 255, 255));
+		lbUnidade.setForeground(new Color(255, 255, 255));
+		MaskFormatter mascaraCep = null;
+		 MaskFormatter mascaraData = null;
+		try {
+			mascaraCep = new MaskFormatter("#####-###");
+			 mascaraData = new MaskFormatter("##/##/####");
+			 mascaraCep.setPlaceholderCharacter('_');
+			 mascaraData.setPlaceholderCharacter('_');
+		} catch (Exception e) {
+			System.out.print("erro");
+		}
+		
+	  tfCep = new JFormattedTextField(mascaraCep);
+	  tfIdade = new JFormattedTextField(mascaraData);
+	// tfCep = new JTextField();
+	 
 		tfNome = new JTextField();
-		tfCep = new JTextField();
-		tfIdade = new JTextField();
 		
 		cbPlano = new JComboBox<>();
 		cbUnidade = new JComboBox<>();
@@ -81,20 +112,21 @@ public class ClienteCadastro extends JDialog {
 		
 		cp = getContentPane();
 		cp.setLayout(null);
-		cp.setBackground(new Color(180, 205, 205));
+		cp.setBackground(new Color(46, 46, 46));
+	
 		
 		lbTitulo.setBounds(125, 10, 300, 25);
 		lbNome.setBounds(20, 50, 100, 25);
-		tfNome.setBounds(100, 50, 360, 25);
+		tfNome.setBounds(150, 50, 360, 25);
 		lbCep.setBounds(20, 100, 100, 25);
-		tfCep.setBounds(100, 100, 100, 25);
-		lbIdade.setBounds(20, 150, 100, 25);
-		tfIdade.setBounds(100, 150, 100, 25);
+		tfCep.setBounds(150, 100, 100, 25);
+		lbIdade.setBounds(20, 150, 140, 25);
+		tfIdade.setBounds(150, 150, 100, 25);
 		lbPlano.setBounds(20, 200, 100, 25);
-		cbPlano.setBounds(100, 200, 100, 25);
+		cbPlano.setBounds(150, 200, 100, 25);
 		lbUnidade.setBounds(20, 250, 100, 25);		
-		cbUnidade.setBounds(100, 250, 100, 25);
-		btCadastrar.setBounds(330, 300, 300, 30);
+		cbUnidade.setBounds(150, 250, 150, 25);
+		btCadastrar.setBounds(190, 310, 150, 30);
 		
 		cp.add(lbTitulo);
 		cp.add(lbNome);
@@ -112,16 +144,27 @@ public class ClienteCadastro extends JDialog {
 		
 		btCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				btCadastrarAction();
 			}
 		});
 	}
 	
+	
 	private void btCadastrarAction() {
+		
 		List<String> erros = new ArrayList<String>();
 		
-		erros = new ClienteController().insereCliente(tfNome.getText(), tfCep.getText(), Integer.parseInt(tfIdade.getText()), 
+		erros = new ClienteController().insereCliente(tfNome.getText(), tfCep.getText(), tfIdade.getText(), 
 														(Unidade) cbUnidade.getSelectedItem(), (Plano) cbPlano.getSelectedItem());
+
+			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso:\n", 
+					                      "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+			
+			tfCep.setText("");
+			tfIdade.setText("");
+			tfNome.setText("");
+			
 	}
 	
 }

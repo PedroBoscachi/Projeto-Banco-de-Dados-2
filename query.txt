@@ -12,7 +12,7 @@ create table unidade (
 create table plano (
 	Id int not null auto_increment primary key,
     Nome varchar(60) not null,
-    Periodo int not null,
+    Duracao int not null,
     Valor double
 );
 
@@ -23,6 +23,17 @@ create table equipamento (
     Valor double not null,
     Unidade int not null,
     foreign key(Unidade) references Unidade(Id)
+);
+
+CREATE TABLE cliente (
+  Matricula int NOT NULL AUTO_INCREMENT primary key,
+  Nome varchar(60) NOT NULL,
+  Cep varchar(15) NOT NULL,
+  Dat_nas Date NOT NULL,
+  Unidade int NOT NULL,
+  Plano int NOT NULL,
+  foreign key(Unidade) references Unidade(Id),
+  foreign key(Plano) references Plano(Id)
 );
 
 INSERT INTO UNIDADE VALUES
@@ -37,10 +48,10 @@ INSERT INTO PLANO VALUES
 (null, "Expert", 12, 400.00);
 
 INSERT INTO EQUIPAMENTO VALUES
-(null, "Esteira", "disponível", 45.00, 5),
-(null, "Elástico", "Indisponível", 25.00, 7),
-(null, "Pesos", "disponível", 15.00, 6);
+(null, "Esteira", "disponível", 45.00, 1),
+(null, "Elástico", "Indisponível", 25.00, 2),
+(null, "Pesos", "disponível", 15.00, 3);
 
 INSERT INTO CLIENTE VALUES
-(null, "Lucas Lima", 43355, 21, 8, 4),
-(null, "Pedro Farias", 66429, 18, 5, 5);
+(null, "Lucas Lima", "01104-001", '2001-07-04', 1, 1),
+(null, "Pedro Farias", "01102-012", '2003-07-04' , 2, 2);

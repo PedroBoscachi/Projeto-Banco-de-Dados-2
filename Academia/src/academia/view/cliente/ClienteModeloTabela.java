@@ -10,7 +10,7 @@ import academia.model.unidade.Unidade;
 
 @SuppressWarnings("serial")
 public class ClienteModeloTabela extends AbstractTableModel {
-		private String[] colunas = { "Matrícula", "Nome", "CEP", "Idade", "Unidade", "Plano" };
+		private String[] colunas = { "Matrícula", "Nome", "CEP", "Data nasc.", "Unidade", "Plano" };
 		private List<Cliente> clientes; 
 		private List<Unidade> unidades;
 		private List<Plano> planos;
@@ -53,10 +53,23 @@ public class ClienteModeloTabela extends AbstractTableModel {
 	            	valor = cliente.getNome(); 
 	            	break;
 	            case 2: 
+	            	
 	            	valor = cliente.getCep();
 	            	break;
-	            case 3: 
-	            	valor = cliente.getIdade();
+	            case 3:
+	            	String ano = cliente.getIdade().substring(0,4);
+	        		String mes = cliente.getIdade().substring(5,7)+"/";
+	        		String dia = cliente.getIdade().substring(8,10)+"/";
+	        		String FormattedDate = "";
+	            	if(cliente.getIdade().contains("-")) {
+	            		FormattedDate = dia.concat(mes).concat(ano);
+	            	} else {
+	            		FormattedDate = cliente.getIdade();
+	            	}
+	            	
+	        	
+	        		
+	            	valor = FormattedDate;
 	            	break;
 	            case 4:
 	            	if(unidades != null)
@@ -89,7 +102,7 @@ public class ClienteModeloTabela extends AbstractTableModel {
 				clientes.get(linha).setCep(valor.toString()); 
 				break;
 			case 3:
-				clientes.get(linha).setIdade( Integer.parseInt(valor.toString())); 
+				clientes.get(linha).setIdade((valor.toString())); 
 				break;
 			case 4:
 				clientes.get(linha).setUnidade((Unidade) valor);

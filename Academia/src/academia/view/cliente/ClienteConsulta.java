@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -25,6 +27,7 @@ import academia.model.unidade.Unidade;
 
 @SuppressWarnings("serial")
 public class ClienteConsulta extends JDialog {
+	Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\agenda.png");
 	private JLabel lbTitulo;
 	private JTable tbCliente; 
 	private ClienteModeloTabela mtTabela;
@@ -35,7 +38,7 @@ public class ClienteConsulta extends JDialog {
 	
 	public ClienteConsulta() { 
 		setTitle("Consulta de Clientes"); 
-		setSize(700, 320); 
+		setSize(860, 380); 
 		setLocationRelativeTo(null); 
 		setModal(true); 
 		
@@ -67,26 +70,25 @@ public class ClienteConsulta extends JDialog {
 		} else
 			mtTabela = new ClienteModeloTabela(clientes, unidades, planos);
 		
-		lbTitulo = new JLabel("Consulta de Funcionários");
+		lbTitulo = new JLabel("Consulta de Funcionários",icon, SwingConstants.CENTER);
 		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19));
 		
 		tbCliente = new JTable(mtTabela);
 		spTabela = new JScrollPane(tbCliente); 
 		
 		tbCliente.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); 
-		tbCliente.getColumnModel().getColumn(0).setPreferredWidth(50);
-		tbCliente.getColumnModel().getColumn(1).setPreferredWidth(160);
-		tbCliente.getColumnModel().getColumn(2).setPreferredWidth(70);
-		tbCliente.getColumnModel().getColumn(3).setPreferredWidth(80);
-		tbCliente.getColumnModel().getColumn(4).setPreferredWidth(105);
-		tbCliente.getColumnModel().getColumn(5).setPreferredWidth(177);
+		tbCliente.getColumnModel().getColumn(0).setPreferredWidth(70);
+		tbCliente.getColumnModel().getColumn(1).setPreferredWidth(175);
+		tbCliente.getColumnModel().getColumn(2).setPreferredWidth(85);
+		tbCliente.getColumnModel().getColumn(3).setPreferredWidth(120);
+		tbCliente.getColumnModel().getColumn(4).setPreferredWidth(154);
+		tbCliente.getColumnModel().getColumn(5).setPreferredWidth(192);
 		
 		tbCliente.getTableHeader().setFont(new Font(null, Font.BOLD, 12));
 		
 		DefaultTableCellRenderer dtcrCentro = new DefaultTableCellRenderer();
 		dtcrCentro.setHorizontalAlignment(SwingConstants.CENTER);
 		tbCliente.getColumnModel().getColumn(0).setCellRenderer(dtcrCentro);
-		
 		DefaultTableCellRenderer dtcrDireita = new DefaultTableCellRenderer();
 		dtcrDireita.setHorizontalAlignment(SwingConstants.RIGHT);
 		tbCliente.getColumnModel().getColumn(3).setCellRenderer(dtcrDireita);
@@ -99,13 +101,13 @@ public class ClienteConsulta extends JDialog {
 
 		cp = getContentPane();
 		cp.setLayout(null); 
-		cp.setBackground(new Color(180, 205, 205)); 
+		cp.setBackground(new Color(46, 46, 46)); 
 
-		lbTitulo.setBounds(215, 10, 300, 25); 
-		spTabela.setBounds(20, 40, 645, 182);
-		btAlterar.setBounds(215, 240, 100, 25);
-		btExcluir.setBounds(355, 240, 100, 25);
-
+		lbTitulo.setBounds(275, 10, 300, 25); 
+		spTabela.setBounds(20, 50, 800, 200);
+		btAlterar.setBounds(275, 290, 100, 25);
+		btExcluir.setBounds(435, 290, 100, 25);
+		lbTitulo.setForeground(new Color(255, 255, 255));
 		cp.add(lbTitulo);
 		cp.add(spTabela);
 		cp.add(btAlterar);

@@ -9,12 +9,16 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 
@@ -22,6 +26,7 @@ import academia.controller.PlanoController;
 
 @SuppressWarnings("serial")
 public class PlanoCadastro extends JDialog {
+	Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 	private JLabel lbTitulo, lbNome, lbPeriodo, lbValor;
 	private JTextField tfNome;
 	private JFormattedTextField tfValor;
@@ -31,16 +36,16 @@ public class PlanoCadastro extends JDialog {
 	
 	public PlanoCadastro() {
 		setTitle("Cadastro de Plano"); 
-		setSize(1000, 800); 
+		setSize(550, 250);
 		setLocationRelativeTo(null); 
 		setModal(true);
 		
-		lbTitulo = new JLabel("Cadastro de plano");
+		lbTitulo = new JLabel("Cadastro de plano",icon, SwingConstants.CENTER);
 		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19));
 		
-		lbNome = new JLabel("Nome");
-		lbPeriodo = new JLabel("Período");
-		lbValor = new JLabel("Valor");
+		lbNome = new JLabel("Nome:");
+		lbPeriodo = new JLabel("Duração (meses):");
+		lbValor = new JLabel("Valor (R$):");
 		
 		tfNome = new JTextField();
 		
@@ -60,16 +65,21 @@ public class PlanoCadastro extends JDialog {
         
         cp = getContentPane(); 
 		cp.setLayout(null); 
-		cp.setBackground(new Color(180, 205, 205)); 
+		cp.setBackground(new Color(46, 46, 46)); 
 		
-		lbTitulo.setBounds(125, 10, 300, 25); 
-		lbNome.setBounds(20, 50, 100, 25);
-		tfNome.setBounds(100, 50, 360, 25);
-		lbPeriodo.setBounds(20, 90, 100, 25);
-		cbPeriodo.setBounds(50, 100, 100, 25);
-		lbValor.setBounds(100, 150, 100, 25);
-		tfValor.setBounds(100, 170, 100, 25);
-		btCadastrar.setBounds(200, 250, 100, 25);
+		lbTitulo.setBounds(115, 10, 300, 20); 
+		lbNome.setBounds(20, 50, 100, 20);
+		tfNome.setBounds(150, 50, 360, 20);
+		lbPeriodo.setBounds(20, 90, 120, 20);
+		cbPeriodo.setBounds(150, 90, 100, 20);
+		lbValor.setBounds(20, 130, 100, 20);
+		tfValor.setBounds(150, 130, 100, 20);
+		btCadastrar.setBounds(215, 180, 100, 20);
+		
+		lbTitulo.setForeground(new Color(255, 255, 255));
+		lbNome.setForeground(new Color(255, 255, 255));
+		lbPeriodo.setForeground(new Color(255, 255, 255));
+		lbValor.setForeground(new Color(255, 255, 255));
 		
 		cp.add(lbTitulo);
 		cp.add(lbNome);
@@ -96,5 +106,10 @@ public class PlanoCadastro extends JDialog {
 		List<String> erros = new ArrayList<String>();
 		
 		erros = new PlanoController().inserePlano(tfNome.getText(), (Integer)cbPeriodo.getSelectedItem(), valor);
+		
+		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso:\n", 
+                "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+			tfNome.setText("");
+			tfValor.setValue(0);
 	}
 }

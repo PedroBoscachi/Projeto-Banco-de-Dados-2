@@ -8,12 +8,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.text.MaskFormatter;
 
 import academia.controller.ClienteController;
 import academia.model.plano.Plano;
@@ -22,7 +27,7 @@ import academia.model.unidade.Unidade;
 @SuppressWarnings("serial")
 public class ClienteAlteracao extends JDialog {
 	private JLabel lbTitulo, lbNome, lbCep, lbIdade, lbUnidade, lbPlano;
-	private JTextField tfNome, tfCep, tfIdade;
+	private JTextField tfNome;
 	private JComboBox<Unidade> cbUnidade;
 	private JComboBox<Plano> cbPlano;
 	private JButton btSalvar;
@@ -30,28 +35,53 @@ public class ClienteAlteracao extends JDialog {
 	private int idCliente;
 	private int linhaSelecionada; 
 	private ClienteModeloTabela mtTabela; 
+	private JFormattedTextField tfCep, tfIdade;
 
 	public ClienteAlteracao(int idCliente, String nome, String cep, String idade, 
 			                    String unidade, String plano, int linha, ClienteModeloTabela mtTabela) { 
+		
+		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 		setTitle("Alteração de Clientes"); 
-		setSize(500, 335); 
+		setSize(600, 345); 
 		setLocationRelativeTo(null); 
 		setModal(true);
 		
-		lbTitulo = new JLabel("Alteração de Clientes");
+		lbTitulo = new JLabel("Alteração de Clientes", icon, SwingConstants.CENTER);
 		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19)); 
 		
 		lbNome = new JLabel("Nome");
 		lbCep = new JLabel("CEP");
-		lbIdade = new JLabel("Idade");
+		lbIdade = new JLabel("Data de Nascimento:");
 		lbUnidade = new JLabel("Unidade");
 		lbPlano = new JLabel("Plano");
 		
+		lbPlano.setForeground(new Color(255, 255, 255));
+		lbIdade.setForeground(new Color(255, 255, 255));
+		lbUnidade.setForeground(new Color(255, 255, 255));
+		lbCep.setForeground(new Color(255, 255, 255));
+		lbNome.setForeground(new Color(255, 255, 255));
+		lbTitulo.setForeground(new Color(255, 255, 255));
+		
+		
 		tfNome = new JTextField();
-		tfCep = new JTextField();
-		tfIdade = new JTextField();
+		
 		
 		cbUnidade = new JComboBox<>();		
+		
+		MaskFormatter mascaraCep = null;
+		 MaskFormatter mascaraData = null;
+		try {
+			mascaraCep = new MaskFormatter("#####-###");
+			 mascaraData = new MaskFormatter("##/##/####");
+			 mascaraCep.setPlaceholderCharacter('_');
+			 mascaraData.setPlaceholderCharacter('_');
+		} catch (Exception e) {
+			System.out.print("erro");
+		}
+		
+		
+	  tfCep = new JFormattedTextField(mascaraCep);
+	  tfIdade = new JFormattedTextField(mascaraData);
 		
 		List<Unidade> unidades = new ArrayList<Unidade>();
 		
@@ -102,20 +132,22 @@ public class ClienteAlteracao extends JDialog {
 
 		cp = getContentPane();
 		cp.setLayout(null); 
-		cp.setBackground(new Color(180, 205, 205)); 
+		
+		cp.setBackground(new Color(46, 46, 46));
+
 
 		lbTitulo.setBounds(125, 10, 300, 25); 
 		lbNome.setBounds(20, 50, 100, 25);
-		tfNome.setBounds(100, 50, 360, 25);
+		tfNome.setBounds(150, 50, 360, 25);
 		lbCep.setBounds(20, 90, 100, 25);
-		tfCep.setBounds(100, 90, 100, 25);
-		lbIdade.setBounds(20, 130, 100, 25);
-		tfIdade.setBounds(100, 130, 100, 25);
+		tfCep.setBounds(150, 90, 100, 25);
+		lbIdade.setBounds(20, 130, 140, 25);
+		tfIdade.setBounds(150, 130, 100, 25);
 		lbUnidade.setBounds(20, 170, 100, 25);
-		cbUnidade.setBounds(100, 170, 220, 25);
-		lbPlano.setBounds(16, 210, 250, 25);
-		cbPlano.setBounds(100, 210, 300, 35);
-		btSalvar.setBounds(200, 250, 100, 25);
+		cbUnidade.setBounds(150, 170, 220, 25);
+		lbPlano.setBounds(20, 210, 250, 25);
+		cbPlano.setBounds(150, 210, 100, 25);
+		btSalvar.setBounds(220, 270, 120, 25);
 
 		cp.add(lbTitulo);
 		cp.add(lbNome);
@@ -143,7 +175,7 @@ public class ClienteAlteracao extends JDialog {
 		erros = new ClienteController().alteraCliente(this.idCliente,
 															  tfNome.getText(),
 															  tfCep.getText(),
-															  Integer.parseInt(tfIdade.getText()),
+															  (tfIdade.getText()),
 															  (Unidade) cbUnidade.getSelectedItem(),
 															  (Plano) cbPlano.getSelectedItem());	
 		

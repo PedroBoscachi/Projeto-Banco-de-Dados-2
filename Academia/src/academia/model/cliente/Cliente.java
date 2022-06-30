@@ -1,5 +1,7 @@
 package academia.model.cliente;
 
+import java.sql.Date;
+
 import academia.model.plano.Plano;
 import academia.model.unidade.Unidade;
 
@@ -7,7 +9,7 @@ public class Cliente {
 	private Integer matricula;
 	private String nome;
 	private String cep;
-	private Integer idade;
+	private String idade;
 	private Unidade unidade;
 	private Plano plano;
 	
@@ -35,11 +37,11 @@ public class Cliente {
 		this.cep = cep;
 	}
 	
-	public Integer getIdade() {
+	public String getIdade() {
 		return idade;
 	}
 	
-	public void setIdade(Integer idade) {
+	public void setIdade(String idade) {
 		this.idade = idade;
 	}
 	
