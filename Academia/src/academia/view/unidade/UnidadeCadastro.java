@@ -23,7 +23,7 @@ import javax.swing.SwingConstants;
 import academia.controller.UnidadeController;
 
 public class UnidadeCadastro extends JDialog {
-	Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
+	Icon icon = new ImageIcon("D:\\LIÇÕES IFSP\\3 SEMESTRE\\BD2A3\\Projeto\\Projeto-Academia\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 	private JLabel lbTitulo, lbNome, lbEstado, lbCidade, lbRua;
 	private JTextField tfNome, tfCidade, tfRua;
 	private static final String valEstado[] = {"AC", "AL", "AP", "AM", "BA", "CE", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",

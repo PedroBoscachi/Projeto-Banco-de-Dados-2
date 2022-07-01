@@ -27,7 +27,7 @@ import academia.model.unidade.Unidade;
 
 @SuppressWarnings("serial")
 public class ClienteConsulta extends JDialog {
-	Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\agenda.png");
+	Icon icon = new ImageIcon("D:\\LIÇÕES IFSP\\3 SEMESTRE\\BD2A3\\Projeto\\Projeto-Academia\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\agenda.png");
 	private JLabel lbTitulo;
 	private JTable tbCliente; 
 	private ClienteModeloTabela mtTabela;
@@ -37,7 +37,7 @@ public class ClienteConsulta extends JDialog {
 	private Container cp; 
 	
 	public ClienteConsulta() { 
-		setTitle("Consulta de Clientes"); 
+		setTitle("Consulta de Alunos"); 
 		setSize(860, 380); 
 		setLocationRelativeTo(null); 
 		setModal(true); 
@@ -70,7 +70,7 @@ public class ClienteConsulta extends JDialog {
 		} else
 			mtTabela = new ClienteModeloTabela(clientes, unidades, planos);
 		
-		lbTitulo = new JLabel("Consulta de Funcionários",icon, SwingConstants.CENTER);
+		lbTitulo = new JLabel("Consulta de Alunos",icon, SwingConstants.CENTER);
 		lbTitulo.setFont(new Font("Arial", Font.BOLD, 19));
 		
 		tbCliente = new JTable(mtTabela);

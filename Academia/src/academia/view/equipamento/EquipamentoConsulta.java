@@ -36,7 +36,7 @@ public class EquipamentoConsulta extends JDialog {
 	private Container cp;
 	
 	public EquipamentoConsulta() {
-		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\agenda.png");
+		Icon icon = new ImageIcon("D:\\\\LIÇÕES IFSP\\\\3 SEMESTRE\\\\BD2A3\\\\Projeto\\\\Projeto-Academia\\\\Projeto-Banco-de-Dados-2\\\\Academia\\\\src\\\\academia\\\\view\\\\agenda.png");
 		setTitle("Consulta de Equipamentos"); 
 		setSize(700, 320); 
 		setLocationRelativeTo(null); 

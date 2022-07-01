@@ -37,7 +37,7 @@ public class PlanoAlteracao extends JDialog {
 	private PlanoModeloTabela mtTabela; 
 
 	public PlanoAlteracao(int idPlano, String nome, Integer periodo, String valor, int linha, PlanoModeloTabela mtTabela) { 
-		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
+		Icon icon = new ImageIcon("D:\\LIÇÕES IFSP\\3 SEMESTRE\\BD2A3\\Projeto\\Projeto-Academia\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 		setTitle("Alteração de Planos"); 
 		setSize(600, 335); 
 		setLocationRelativeTo(null); 

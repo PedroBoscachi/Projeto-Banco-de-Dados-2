@@ -33,7 +33,7 @@ public class UnidadeAlteracao extends JDialog {
 
 	public UnidadeAlteracao(int idUnidade, String nome, String estado, String cidade, 
 			                    String rua, int linha, UnidadeModeloTabela mtTabela) { 
-		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
+		Icon icon = new ImageIcon("D:\\LIÇÕES IFSP\\3 SEMESTRE\\BD2A3\\Projeto\\Projeto-Academia\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 		setTitle("Alteração de Unidades"); 
 		setSize(500, 315); 
 		setLocationRelativeTo(null); 

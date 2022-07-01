@@ -9,7 +9,7 @@ public class ConnectionDatabase {
 	private static final String SERVER = "jdbc:mysql://localhost";
 	private static final String DATABASE = "/academia";
 	private static final String USER = "?user=root";
-	private static final String PASSWORD = "&password=Visualgthebest123";
+	private static final String PASSWORD = "&password=1234567";
 	
 	private static final String USE_SSL = "&useSSL=false";
 	

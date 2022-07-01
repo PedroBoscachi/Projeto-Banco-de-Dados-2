@@ -46,7 +46,7 @@ public class Index extends JFrame {
 
 	
 	public Index() {
-		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\icon.png");
+		Icon icon = new ImageIcon("D:\\\\LIÇÕES IFSP\\\\3 SEMESTRE\\\\BD2A3\\\\Projeto\\\\Projeto-Academia\\\\Projeto-Banco-de-Dados-2\\\\Academia\\\\src\\\\academia\\\\view\\\\icon.png");
 		mbBarra = new  JMenuBar();
 		mnCadastro = new JMenu("Cadastro");
 		mnCadastro.setFont(new Font("Roboto", Font.BOLD, 15)); 

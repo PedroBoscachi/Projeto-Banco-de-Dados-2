@@ -27,7 +27,7 @@ import academia.model.unidade.Unidade;
 
 @SuppressWarnings("serial")
 public class EquipamentoCadastro extends JDialog {
-	Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
+	Icon icon = new ImageIcon("D:\\LIÇÕES IFSP\\3 SEMESTRE\\BD2A3\\Projeto\\Projeto-Academia\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 	private JLabel lbTitulo, lbNome, lbDescricao, lbValor, lbUnidade;
 	private JTextField tfNome, tfDescricao;
 	private JFormattedTextField tfValor;

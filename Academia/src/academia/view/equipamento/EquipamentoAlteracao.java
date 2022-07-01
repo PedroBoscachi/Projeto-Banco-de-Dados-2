@@ -39,7 +39,7 @@ public class EquipamentoAlteracao extends JDialog {
 
 	public EquipamentoAlteracao(int idEquipamento, String nome, String descricao, String valor, 
 			                    String unidade, int linha, EquipamentoModeloTabela mtTabela) { 
-		Icon icon = new ImageIcon("C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
+		Icon icon = new ImageIcon("D:\\LIÇÕES IFSP\\3 SEMESTRE\\BD2A3\\Projeto\\Projeto-Academia\\Projeto-Banco-de-Dados-2\\Academia\\src\\academia\\view\\caneta.png");
 		setTitle("Alteração de Equipamentos"); 
 		setSize(500, 290); 
 		setLocationRelativeTo(null); 
